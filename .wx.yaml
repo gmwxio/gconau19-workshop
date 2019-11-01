@@ -1,0 +1,21 @@
+workspaces:
+- path: repos/wx
+  url: https://github.com/wxio/wx.git
+
+- path: repos/dna
+  url: https://github.com/wxio/dna.git
+
+- path: repos/lcmd
+  url: https://github.com/wxio/lcmd.git
+
+- path: repos/okmod
+  url: https://github.com/wxio/okmod.git
+
+- path: repos/goodmod
+  url: https://github.com/wxio/goodmod.git
+
+- path: repos/go-git-update
+  url: https://github.com/wxio/go-git-update.git
+
+- path: repos/gconau19
+  url: https://github.com/wxio/gconau19.git
