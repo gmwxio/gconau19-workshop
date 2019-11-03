@@ -23,7 +23,7 @@ An installed Go 1.13 environment.
 # Get and build a version of the wx /works/ cli tool
 go get -x github.com/wxio/wx@v0.0.6
 # Create and populate a .wx.yml config file
-cat > .wx.yaml < EOF
+cat > .wx.yaml << EOF
 workspaces:
 - path: repos/wx
   url: https://github.com/wxio/wx.git
