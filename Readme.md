@@ -21,7 +21,10 @@ An installed Go 1.13 environment.
 
 ``` bash
 # Get and build a version of the wx /works/ cli tool
-go get -x github.com/wxio/wx@v0.0.6
+# go get -x github.com/wxio/wx@v0.0.6
+## can't use go get as the replaces aren't respected
+wget https://github.com/wxio/wx/releases/download/v0.0.6/wx_0.0.6_linux_x86_64.tar.gz
+tar xf wx_0.0.6_linux_x86_64.tar.gz
 # Create and populate a .wx.yml config file
 cat > .wx.yaml << EOF
 workspaces:
