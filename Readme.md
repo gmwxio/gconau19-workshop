@@ -160,3 +160,39 @@ go mod edit -replace=github.com/wxio/badmod=private.org/gcon.git@latest
 go build
 ```
 
+## Development Environment in a Box
+
+The setup for the docker based environment can be found if the `diabox` directory in the https://github.com/wxio/lcmd repository.
+
+### gRPC Mono repo
+
+The protobuf mono including the `lcmd` service definition as at https://github.com/wxio/dna/tree/master/store/wxio .
+
+To modify the lcmd service edit the `lcmd.proto` and from the `lcmd` directory run 
+
+```
+godna -d --logtostderr generate ../
+```
+
+(compile the godna binary if needed).
+
+### lcmd server and grpcui
+
+
+Compile and run the `lcmd` service
+
+```
+./lcmd grpc_server
+```
+
+The `grpcui` used to access the `lcmd` service can be found as https://github.com/fullstorydev/grpcui in the `cmd/grpcui` folder.
+
+```
+git clone https://github.com/fullstorydev/grpcui.git
+cd grpcui/cmd/grpcui
+go build
+./grpcui -plaintext -bind 0 -port 50052 localhost:50051
+```
+
+Access grpcui at
+http://localhost:50052/
