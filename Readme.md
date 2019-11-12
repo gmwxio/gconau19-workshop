@@ -5,7 +5,12 @@ By Gary Miller
 (gm@wx.io)
 
 This documentation covers the technical content from the workshop.
-Specifically Go Modules.
+Specifically it covers two of the three most enterprise issues with Go Modules.
+
+1. The need to copy or modify `require` and `exclude` statement from 3rd party modules.
+2. Mixing private and public git repositories.
+
+The issue not shown here is **_user keyboard interface errors_** ie. the typing or mis-spelling of packages in ones own code.
 
 ## Prerequisites
 
@@ -16,9 +21,12 @@ An installed Go 1.13 environment.
 
 ``` bash
 # Get and build a version of the wx /works/ cli tool
-go get -x github.com/wxio/wx@v0.0.6
+# go get -x github.com/wxio/wx@v0.0.6
+## can't use go get as the replaces aren't respected
+wget https://github.com/wxio/wx/releases/download/v0.0.6/wx_0.0.6_linux_x86_64.tar.gz
+tar xf wx_0.0.6_linux_x86_64.tar.gz
 # Create and populate a .wx.yml config file
-cat > .wx.yaml < EOF
+cat > .wx.yaml << EOF
 workspaces:
 - path: repos/wx
   url: https://github.com/wxio/wx.git
@@ -86,6 +94,8 @@ go build
 ```
 
 ### Complex
+
+The difference between the simple and complex cases is where `go` gets information of the source control system used. In the simple case `go get` uses `https` to ask bitbucket.org which VCS to use. In the complex case this info is the `.git` in the import path.
 
 Use-case:
 
